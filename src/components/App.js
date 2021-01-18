@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import List from './List';
 
 const list = [
@@ -26,14 +26,26 @@ const welcome = {
 };
 
 const App = () => {
+  console.log('APP');
+  const [searchTerm, setSearchTerm] = useState('');
   const { greeting, title } = welcome;
+
+  const handleChange = event => setSearchTerm(event.target.value);
 
   return(
     <div>
       <h1>{greeting} {title}!</h1>
 
       <label htmlFor='search'>Search</label>
-      <input type='text' id='search' />
+      <input 
+        type='email' 
+        id='search'
+        onChange={handleChange} 
+      />
+
+      <p>
+        Seraching for <strong>{searchTerm}</strong>
+      </p>
 
       <List list={list} />
     </div>
