@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import List from './List';
+import Search from './Search';
 
 const list = [
     {
@@ -27,25 +28,13 @@ const welcome = {
 
 const App = () => {
   console.log('APP');
-  const [searchTerm, setSearchTerm] = useState('');
   const { greeting, title } = welcome;
-
-  const handleChange = event => setSearchTerm(event.target.value);
 
   return(
     <div>
       <h1>{greeting} {title}!</h1>
 
-      <label htmlFor='search'>Search</label>
-      <input 
-        type='email' 
-        id='search'
-        onChange={handleChange} 
-      />
-
-      <p>
-        Seraching for <strong>{searchTerm}</strong>
-      </p>
+      <Search />
 
       <List list={list} />
     </div>
